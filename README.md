@@ -58,7 +58,7 @@ Afin de simplifier l'intégration, cette fonctionnalité a été simplifiée au 
 
 Devispresto enverra une requête POST à l'URL suivante :
 ```
-https://www.simplebo.fr/transmit-customer-info
+https://api.www.simplebo.fr/users
 ```
 
 Cette requête POST doit contenir les paramètres suivants :
@@ -87,7 +87,7 @@ En cas d'erreur, le code réponse est égal à 1 et le texte dépend de l'erreur
 ```php
 
 // Vars initialization
-$partner_api_url = 'https://www.simplebo.fr/transmit-customer-info'
+$partner_api_url = 'https://api.www.simplebo.fr/users'
 
 // Postfield array initialization
 $customer_info = array(
