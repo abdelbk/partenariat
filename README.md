@@ -23,7 +23,7 @@ Le code de l'iframe se trouve dans le kit de partage de l'interface partenaire, 
 
 Par exemple, pour un partenariat avec le code coupon **devispresto2014**, le code de l'iframe sera :
 ```html
-<iframe src="https://www.simplebo.fr/co-branding?co=devispresto2014&i" width="640" height="480"></iframe>
+<iframe src="https://www.simplebo.fr/demande-information?co=devispresto2014&i" width="640" height="480"></iframe>
 ```
 
 L'espace laissé à l'iframe doit faire (h*l) 640px * 480px. L'iframe s'intègre en transparence dans la page dont le fond doit être d'une couleur claire pour obtenir un bon constraste.
@@ -34,7 +34,7 @@ Le lien vers le formulaire de contact tracké se trouve dans le kit de partage d
 
 Par exemple, pour un partenariat avec le code coupon **devispresto2014**, le lien vers le formulaire sera :
 ```
-https://www.simplebo.fr/co-branding?co=devispresto2014
+https://www.simplebo.fr/demande-information?co=devispresto2014
 ```
 
 ## 2. Checkbox "je suis intéressé" dans le panier d'achat
@@ -87,7 +87,7 @@ En cas d'erreur, le code réponse est égal à 1 et le texte dépend de l'erreur
 ```php
 
 // Vars initialization
-$partner_api_url = 'https://www.simplebo.fr/partner-api'
+$partner_api_url = 'https://www.simplebo.fr/transmit-customer-info'
 
 // Postfield array initialization
 $customer_info = array(
