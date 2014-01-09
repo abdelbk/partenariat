@@ -23,10 +23,10 @@ Simplébo fournit à devispresto un formulaire permettant à son client de rempl
 Le code de l'iframe se trouve dans le kit de partage de l'interface partenaire, sur le site de Simplébo.
 Par exemple, pour un partenariat avec le code coupon **devispresto2014**, le code de l'iframe sera :
 ```html
-<iframe src="https://www.simplebo.fr/co-branding?co=devispresto2014&i" width="750" height="450"></iframe>
+<iframe src="https://www.simplebo.fr/co-branding?co=devispresto2014&i" width="640" height="480"></iframe>
 ```
 
-L'espace laissé à l'iframe doit faire (h*l) 750px * 450px. L'iframe s'intègre en transparence dans la page dont le fond doit être d'une couleur claire pour obtenir un bon constraste.
+L'espace laissé à l'iframe doit faire (h*l) 640px * 480px. L'iframe s'intègre en transparence dans la page dont le fond doit être d'une couleur claire pour obtenir un bon constraste.
 
 
 ### Lien vers le site Simplébo
