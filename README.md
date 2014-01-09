@@ -58,7 +58,7 @@ Afin de simplifier l'intégration, cette fonctionnalité a été simplifiée au 
 
 Devispresto enverra une requête POST à l'URL suivante :
 ```
-https://www.simplebo.fr/partner-api
+https://www.simplebo.fr/transmit-customer-info
 ```
 
 Cette requête POST doit contenir les paramètres suivants :
