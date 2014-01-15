@@ -60,6 +60,7 @@ Devispresto enverra une requête POST à l'URL suivante :
 ```
 https://api.www.simplebo.fr/users
 ```
+Attention, l'API étant très récente, l'identité du certificat SSL utilisé sur https://api.www.simplebo.fr correspond encore à une autre adresse. 
 
 Cette requête POST doit contenir les paramètres suivants :
 - firstname
