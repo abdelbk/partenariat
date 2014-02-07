@@ -68,7 +68,7 @@ Cette requête POST doit contenir les paramètres suivants :
 - email
 - phone_number
 - code_partner
-- job_category
+- job_category (facultatif)
 
 La réponse du serveur Simplébo est un JSON qui contient les informations suivantes :
 - response_code
