@@ -68,6 +68,7 @@ Cette requête POST doit contenir les paramètres suivants :
 - email
 - phone_number
 - code_partner
+- job_category
 
 La réponse du serveur Simplébo est un JSON qui contient les informations suivantes :
 - response_code
@@ -97,6 +98,7 @@ $customer_info = array(
   'email'        = 'thierry.lhermitte@simplebo.fr',
   'phone_number' = '+33610918291',
   'code_partner' = 'devispresto2014',
+  'job_category' = 'charpentier'
 );
 
 // HTTPS Request preparation
