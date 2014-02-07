@@ -91,7 +91,7 @@ En cas d'erreur, le code réponse est égal à 1 et le texte dépend de l'erreur
 // Vars initialization
 $partner_api_url = 'https://api.www.simplebo.fr/users'
 $other_info =  'Téléphone secondaire : 01 47 98 18 92' . "\n";
-$other_info .= 'Département d'intervention : 75,91,78' . "\n";
+$other_info .= 'Département d\'intervention : 75,91,78' . "\n";
 $other_info .= 'Entreprise : Charpenterie SARL' . "\n";
 $other_info .= 'Adresse complète : 79 avenue de la République, 75011 Paris';
 
