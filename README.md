@@ -90,15 +90,20 @@ En cas d'erreur, le code réponse est égal à 1 et le texte dépend de l'erreur
 
 // Vars initialization
 $partner_api_url = 'https://api.www.simplebo.fr/users'
+$other_info =  'Téléphone secondaire : 01 47 98 18 92' . "\n";
+$other_info .= 'Département d'intervention : 75,91,78' . "\n";
+$other_info .= 'Entreprise : Charpenterie SARL' . "\n";
+$other_info .= 'Adresse complète : 79 avenue de la République, 75011 Paris';
 
 // Postfield array initialization
 $customer_info = array(
   'firstname'    = 'Thierry',
   'lastname'     = 'Lhermitte',
   'email'        = 'thierry.lhermitte@simplebo.fr',
-  'phone_number' = '+33610918291',
+  'phone_number' = '+33 6 10 91 82 91',
   'code_partner' = 'devispresto2014',
-  'job_category' = 'charpentier'
+  'job_category' = 'charpentier',
+  'other_info'   = $other_info
 );
 
 // HTTPS Request preparation
