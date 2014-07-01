@@ -66,7 +66,7 @@ Cette requête POST doit contenir les paramètres suivants :
 - firstname
 - lastname
 - email
-- phone_number
+- phone_number OU cell
 - code_partner
 - job_category (facultatif)
 
@@ -89,7 +89,8 @@ En cas d'erreur, le code réponse est égal à 1 et le texte dépend de l'erreur
 ```php
 
 // Vars initialization
-$partner_api_url = 'https://api.www.simplebo.fr/users'
+define('PARTNER_API_URL', 'https://api.www.simplebo.fr/users');
+
 $other_info =  'Téléphone secondaire : 01 47 98 18 92' . "\n";
 $other_info .= 'Départements d\'intervention : 75,91,78' . "\n";
 $other_info .= 'Entreprise : Charpenterie SARL' . "\n";
@@ -100,7 +101,8 @@ $customer_info = array(
   'firstname'    = 'Thierry',
   'lastname'     = 'Lhermitte',
   'email'        = 'thierry.lhermitte@simplebo.fr',
-  'phone_number' = '+33 6 10 91 82 91',
+  'phone_number' = '+33 3 01 19 28 19',
+  'cell'         = '+33 6 10 91 82 91',
   'code_partner' = 'devispresto2014',
   'job_category' = 'charpentier',
   'other_info'   = $other_info
@@ -108,7 +110,7 @@ $customer_info = array(
 
 // HTTPS Request preparation
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $partner_api_url);
+curl_setopt($ch, CURLOPT_URL, PARTNER_API_URL);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 curl_setopt($ch, CURLOPT_POST, 1);
