@@ -2,9 +2,9 @@
 
 **Intégration d'un partenariat avec Simplébo**
 
-L'objectif du partenariat avec Simplébo est de permettre à des clients de devispresto de prendre contact avec Simplébo dans l'optique de créer un site internet, en informant Simplébo du fait que le client a été envoyé par devispresto.
+L'objectif du système de partenariat de Simplébo est de permettre à vos clients de prendre contact avec Simplébo dans l'optique de créer un site internet et d'informer Simplébo que c'est vous qui avez envoyé ce client.
 
-Simplébo a développé un système de partenariat qui s'appuie sur des "codes partenaires" fournis par Simplébo afin d'identifier le partenaire et l'offre auquel pourrait souscrire le client. Pour savoir si un client vient de devispresto, un système de tracking faisant intervenir un "code partenaire" a été mis en place.
+Le système de partenariat s'appuie sur des "codes partenaires" fournis par Simplébo afin d'identifier le partenaire et l'offre à laquelle pourrait souscrire le client. Pour savoir qu'un client vient de votre part, un système de tracking faisant intervenir un "code partenaire" a été mis en place.
 
 Ce code, ainsi que les coordonnées du client, peuvent être transmis à Simplébo de plusieurs façons.
 
@@ -15,15 +15,15 @@ Ce code, ainsi que les coordonnées du client, peuvent être transmis à Simplé
 
 ## 1. Page co-brandée
 
-Simplébo fournit à devispresto un formulaire permettant à son client de remplir ses informations de base afin de se faire rappeler par Simplébo. Ce formulaire peut être intégré au site devispresto via une iframe ou être atteint par le client via un simple lien.
+Simplébo fournit à ses partenaires un formulaire permettant à leurs clients de remplir leurs informations de contact afin de se faire rappeler par Simplébo. Ce formulaire peut être intégré à votre site via une iframe ou être atteint par le client via un simple lien.
 
 ### Iframe
 
 Le code de l'iframe se trouve dans le kit de partage de l'interface partenaire, sur le site de Simplébo.
 
-Par exemple, pour un partenariat avec le code coupon **devispresto2014**, le code de l'iframe sera :
+Par exemple, pour un partenariat avec le code coupon **monpartenaire2015**, le code de l'iframe sera :
 ```html
-<iframe src="https://www.simplebo.fr/demande-information?co=devispresto2014&i" width="640" height="480"></iframe>
+<iframe src="https://www.simplebo.fr/demande-information?co=monpartenaire2015&i" width="640" height="480"></iframe>
 ```
 
 L'espace laissé à l'iframe doit faire (h*l) 640px * 480px. L'iframe s'intègre en transparence dans la page dont le fond doit être d'une couleur claire pour obtenir un bon constraste.
@@ -32,15 +32,15 @@ L'espace laissé à l'iframe doit faire (h*l) 640px * 480px. L'iframe s'intègre
 ### Lien vers le site Simplébo
 Le lien vers le formulaire de contact tracké se trouve dans le kit de partage de l'interface partenaire, sur le site de Simplébo.
 
-Par exemple, pour un partenariat avec le code coupon **devispresto2014**, le lien vers le formulaire sera :
+Par exemple, pour un partenariat avec le code coupon **monpartenaire2015**, le lien vers le formulaire sera :
 ```
-https://www.simplebo.fr/demande-information?co=devispresto2014
+https://www.simplebo.fr/demande-information?co=monpartenaire2015
 ```
 
 ## 2. Checkbox "je suis intéressé" dans le panier d'achat
 
-### Intégration de la checkbox au panier
-La checkbox est intégrée au panier par devispresto à côté d'une phrase du type :
+### Intégration d'une checkbox au panier
+La checkbox peut être intégrée à votre panier à côté d'une phrase du type :
 ```
 Créez votre site web d'artisan et améliorez vos ventes.
 
@@ -49,28 +49,29 @@ Créez un site web simple et professionnel en 20 min grâce à notre partenaire 
 et gagnez plus de clients.
 ```
 
-La selection de la checkbox entraîne l'envoi d'une requête du serveur devispresto au serveur Simplébo afin de transmettre les données clients.
+La sélection de la checkbox par le client entraîne l'envoi d'une requête de votre serveur vers le serveur Simplébo afin de transmettre les données clients.
 
 ### Requête server-to-server pour transmettre les infos à Simplébo
-Simplébo permet à devispresto d'envoyer directement les informations d'un client de serveur à serveur (S-to-S) si celui-ci a exprimé d'une manière ou d'une autre le souhait d'être contacté par Simplébo pour en savoir plus.
+Simplébo vous permet d'envoyer directement les informations d'un client de serveur à serveur (S-to-S) s'il a exprimé d'une manière ou d'une autre le souhait d'être contacté par Simplébo pour en savoir plus.
 
 Afin de simplifier l'intégration, cette fonctionnalité a été simplifiée au maximum : elle ne contient qu'une seule requête possible.
 
-Devispresto enverra une requête POST à l'URL suivante :
+La requête attendue pour transmettre les données de contact du client est une requête POST à l'URL suivante :
 ```
 https://api.www.simplebo.fr/users
 ```
-Attention, l'API étant très récente, l'identité du certificat SSL utilisé sur https://api.www.simplebo.fr correspond encore à une autre adresse. 
 
 Cette requête POST doit contenir les paramètres suivants :
-- firstname
-- lastname
-- email
-- phone_number OU cell
-- code_partner
-- job_category (facultatif)
+- firstname *
+- lastname *
+- email *
+- phone_number OU cell *
+- code_partner *
+- job_category
+- other_info
+(* champs obligatoires)
 
-La réponse du serveur Simplébo est un JSON qui contient les informations suivantes :
+La réponse du serveur Simplébo est un JSON très simple qui contient les informations suivantes :
 - response_code
 - response_text
 
@@ -84,6 +85,8 @@ En cas d'erreur, le code réponse est égal à 1 et le texte dépend de l'erreur
 {"response_code":1, "response_text":"Missing code_partner parameter"}
 ```
 
+L'API étant très récente, nous n'avons pas développé de codes d'erreurs spécifiques par soucis d'évolutivité.
+
 ### Exemple de code php d'utilisation du service S-to-S
 
 ```php
@@ -91,7 +94,6 @@ En cas d'erreur, le code réponse est égal à 1 et le texte dépend de l'erreur
 // Vars initialization
 define('PARTNER_API_URL', 'https://api.www.simplebo.fr/users');
 
-$other_info =  'Téléphone secondaire : 01 47 98 18 92' . "\n";
 $other_info .= 'Départements d\'intervention : 75,91,78' . "\n";
 $other_info .= 'Entreprise : Charpenterie SARL' . "\n";
 $other_info .= 'Adresse complète : 79 avenue de la République, 75011 Paris';
@@ -103,7 +105,7 @@ $customer_info = array(
   'email'        = 'thierry.lhermitte@simplebo.fr',
   'phone_number' = '+33 3 01 19 28 19',
   'cell'         = '+33 6 10 91 82 91',
-  'code_partner' = 'devispresto2014',
+  'code_partner' = 'monpartenaire2015',
   'job_category' = 'charpentier',
   'other_info'   = $other_info
 );
@@ -115,7 +117,6 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $customer_info);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
 // Send request
 $req_result = curl_exec($ch);
