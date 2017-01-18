@@ -29,6 +29,24 @@ Le système de partenariat fonctionne par API et Webhooks. Il permet par exemple
 
 Simplébo met à votre disposition une API qui permet de transmettre deux informations : la demande de création de maquette (gratuite) et l'activation du service (payant).
 
+### Fonctionnement de l'API REST
+
+#### Protocol
+
+Le seul protocol autorisé est `HTTPS`. Toutes les communications sont donc chiffrées.
+
+#### URL
+
+L'URL de l'API est `https://api.www.simplebo.fr/v1/$chemin`. Le chemin sera explicité dans les sections suivantes.
+
+#### Authentification 
+
+L'authentification fonctionne sur un système de token transmis dans le header.
+Si le token est **d4e9b0993d1e437605**, chaque appel à l'API doit contenir le header suivant :
+
+```Authorization:Token token="azertyuiop"```
+
+
 ### Structure de l'API
 
 ### Demande de création de maquette gratuite
