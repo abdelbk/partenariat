@@ -31,9 +31,9 @@ Simplébo met à votre disposition une API qui permet de transmettre deux inform
 
 ### Fonctionnement de l'API REST
 
-#### Protocol
+#### Protocole
 
-Le seul protocol autorisé est `HTTPS`. Toutes les communications sont donc chiffrées.
+Le seul protocole autorisé est `HTTPS`. Toutes les communications sont donc chiffrées.
 
 #### URL
 
@@ -44,12 +44,56 @@ L'URL de l'API est `https://api.www.simplebo.fr/v1/$chemin`. Le chemin sera expl
 L'authentification fonctionne sur un système de token transmis dans le header.
 Si le token est **d4e9b0993d1e437605**, chaque appel à l'API doit contenir le header suivant :
 
-```Authorization:Token token="azertyuiop"```
+```
+Authorization:Token token="azertyuiop"
+``` 
 
+(clé : `Authorization`, valeur: `Token token="azertyuiop"`)
 
 ### Structure de l'API
 
-### Demande de création de maquette gratuite
+#### Format des données
+Les données de création de Lead doivent être envoyées par requête POST.
+Les différents arguments sont :
+
+| clé | valeur | Description | Obligatoire |
+| --- | --- | --- | ---         |
+| partner_code  | "foussier" | Code d’identification du partenaire de Simplébo                  | **oui**     |
+| partner       | "LBA" ou "Foussier" | Source de l'appel                                       | **oui**     |
+| campaign_code | 'foussier-simplebo-12' | Code d'identification de la campagne                 | non         |
+| client_id     | "54d8b0fad5922248bf2f" | Code du client, que vous choisissez                  | **oui**     |
+| lastname      | "foussier" | Nom du client                                                    | **oui**     |
+| firstname     | "foussier" | Prénom du client                                                 | non         |
+| client_title  | "Mme" | Civilité du client                                                    | non         |
+| company_name  | "DécOrato" | Nom de la société cliente (Raison sociale)                       | non         |
+| siret         | "182918291" | Siret de la société cliente                                     | non         |
+| email         | "thierry.lhermitte@thierrylhermite.fr" | Email du client                      | **oui**     |
+| phone_number1 | "0182103621" | Telephone 1 du client                                          | **oui**     |
+| phone_number2 | "0629172923" | Téléphone 2 du client                                          | non         |
+| address1      | "12 chemin de la Cote aux Ecureuils" | Première ligne de l'adresse du client  | non         |
+| address2      | "" | Deuxième ligne de l'adresse du client                                    | non         |
+| zipcode       | "28000" | Code postal du client                                               | **oui**     |
+| city          | "Chartres" | Ville du client                                                  | **oui**     |
+| country       | "France" | Pays du client                                                     | **oui**     |
+| typology      | 12 | Typologie du client                                                      | **oui**     |
+
+Voici une représentation JSON des données telles qu'elles pourraient être : 
+```json
+{
+  "partner_code": "foussier",
+  "partner": "LBA",
+  "campaign_code": "foussier-simplebo-12"
+  "client_id": "54d8b0fad5922248bf2f",
+  "lastname": "Lhermitte",
+  "firstname": "Thierry",
+  "client_title": "Mme"
+  "company_name": "",
+  "siret": "182918291",
+  "typology": 12,
+  
+}
+```
+### Demande de création de maquette gratuite (envoi de Lead vers Simplébo)
 
 ### Activation du service payant
 
