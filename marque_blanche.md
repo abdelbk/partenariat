@@ -189,7 +189,7 @@ $api_response = json_decode($req_result);
 
 Le Webhooks est un callback vous permettant d'être abonné à certains événements sur Simplébo. Lorsqu'un de ces événements est déclenché, Simplébo envoie une requête HTTP POST à l'URL configurée du webhook. Le Webhooks peut être appelé lors d'une modification d'état d'un client. Par exemple, lorsque Simplébo résilie un client, un appel au Webhooks peut être effectué pour vous informer de la résiliation.
 
-Dans un premier temps, vous pourrez transmettre à Simplébo une URL dur Webhooks, qui sera appelée lors d'un événement.
+Dans un premier temps, vous pourrez transmettre à Simplébo une URL du Webhooks, qui sera appelée lors d'un événement.
 
 ### Structure des données transmises lors d'un appel Webhooks
 
