@@ -82,15 +82,18 @@ Voici une représentation JSON des données telles qu'elles pourraient être :
 {
   "partner_code": "foussier",
   "partner": "LBA",
-  "campaign_code": "foussier-simplebo-12"
+  "campaign_code": "foussier-simplebo-12",
   "client_id": "54d8b0fad5922248bf2f",
   "lastname": "Lhermitte",
   "firstname": "Thierry",
-  "client_title": "Mme"
+  "client_title": "Mme",
+  "email": "thierry.lhermitte@thierrylhermite.fr",
   "company_name": "",
+  "zipcode": "28000",
+  "city": "Chartres",
+  "country": "France",
   "siret": "182918291",
-  "typology": 12,
-  
+  "typology": 12
 }
 ```
 ### Demande de création de maquette gratuite (envoi de Lead vers Simplébo)
