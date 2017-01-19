@@ -200,10 +200,13 @@ Voici la table des paramètres :
 | parametre     | valeurs         | Description                                                 |
 | ---           | ---             | ---                                                         |
 | event_type    | 0 / 1 / 2       | Code représentant le type d'événement                       |
-| subscription_date | 2017-01-22 | Date de souscription au service, format YYYY-MM-DD           |
+| lead_creation_date | 2017-01-21 | Date de demande de maquette (première transmission d'info)  |
+| service_starting_date | 2017-01-22 | Date d'activation du service, format YYYY-MM-DD                |
+| billing_starting_date | 2017-01-22 | Date de début de facturation du service au client par Foussier, format YYYY-MM-DD |
 | end_of_contract_date | "2018-11-11" / nil | Date de résiliation du service, format YYYY-MM-DD (si résiliation) |
 | unsubscription_reason | "Retards de paiement" / "Ne voit plus l'intérêt d'un site" | Raison de la résiliation (si résiliation) |
-| nb_of_paid_months | 14 | Nombre de mois déjà payés                                            |
+| nb_of_paid_months | 14 | Nombre de mois déjà payés par le client                              |
+| nb_of_offered_months | 6 | Nombre de mois offerts au client                                  |
 | nb_of_options  | 0 / 1 / 2 | Nombre d'options (facturation Simplébo) souscrites par le client |
 | client_id     | "54d8b0fad5922248bf2f" | Code du client                                       |
 | lastname      | "foussier" | Nom du client                                                    |
@@ -224,28 +227,43 @@ Lors d'un appel webhooks, la plateforme Simplébo envoie par la même occasion u
 
 ### Evénements entrainant un appel Webhooks
 
-* Inscription
-* Passage d'un contrat de payant à gratuit
-* Résiliation d'un contrat
-* Passage d'un contrat de gratuit à payant ?
-* Facturation d'options ?
-* Relance d'un contrat résilié ?
+* Création du lead (callback d'appel API)
+* Activation du service pour un client (callback d'appel API)
+* Début de facturation du service par Foussier
+* Résiliation du contrat d'un client
+* Passage d'un contrat de payant à gratuit pour le client (geste commercial de Foussier)
+
+D'autres événements ou d'autres données peuvent être implémentés par Simplébo sur demande. N'hésitez pas à faire des retours sur ce sujet.
 
 ## 4. Echanges non-automatisés - E-mails, téléphone...
 
-### Offrir le service à un client
+### Vous souhaitez offrir le service pour l'un de vos clients
 
-Dans le cas où vous souhaitez offrir le service à l'un de vos clients, 
-
-### Vous souhaitez l'arrêt du service pour l'un de vos client
-
-Dans le cas où vous souhaitez résilier le service de façon unilatérale pour l'un de vos clients, suite à un impayé par exemple, la transmission de cette information se fait par e-mail.
+Dans le cas où vous souhaitez offrir le service à l'un de vos clients, pour faire une geste commercial par exemple, la transmission de cette information se fait par e-mail.
 
 Exemple d'e-mail :
 ```
 Expediteur : Foussier <partenariat@foussier.fr>
 Destinataire : Simplebo <partenariats@simplebo.fr>
-Sujet : [Résiliation] Client Thierry Lhermitte - 54d8b0fad5922248bf2f
+Sujet : [Résiliation][Foussier] Client Thierry Lhermitte - 54d8b0fad5922248bf2f
+
+Bonjour,
+
+Nous souhaitons faire un geste commercial en offrant le contrat au client Thierry Lhermitte (numéro client 54d8b0fad5922248bf2f).
+Raison : gagnant de la loterie de Noël
+
+Merci d'avance
+```
+
+### Vous souhaitez l'arrêt du service pour l'un de vos clients
+
+Dans le cas où vous souhaitez résilier le service de façon unilatérale pour l'un de vos clients, suite à un impayé par exemple, ici encore, la transmission de cette information se fait par e-mail.
+
+Exemple d'e-mail :
+```
+Expediteur : Foussier <partenariat@foussier.fr>
+Destinataire : Simplebo <partenariats@simplebo.fr>
+Sujet : [Résiliation][Foussier] Client Thierry Lhermitte - 54d8b0fad5922248bf2f
 
 Bonjour,
 
