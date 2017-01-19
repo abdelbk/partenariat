@@ -45,10 +45,10 @@ L'authentification fonctionne sur un système de token transmis dans le header.
 Si le token est **d4e9b0993d1e437605**, chaque appel à l'API doit contenir le header suivant :
 
 ```
-Authorization:Token token="azertyuiop"
+Authorization:Token token="d4e9b0993d1e437605"
 ``` 
 
-(clé : `Authorization`, valeur: `Token token="azertyuiop"`)
+(clé : `Authorization`, valeur: `Token token="d4e9b0993d1e437605"`)
 
 ### Structure de l'API
 
@@ -109,7 +109,7 @@ En cas de succès :
 {
   "response" : 0,
   "text" : "OK",
-  "redirect_to" : "https://www.url-de-redirection.simplebo.net"
+  "redirect_to": "https://www.url-de-redirection.simplebo.net"
 }
 ```
 
@@ -117,7 +117,7 @@ En cas d'échec :
 ```json
 {
   "response" : 1,
-  "text" : "Raison de l’erreur"
+  "text": "Raison de l’erreur"
 }
 ```
 
