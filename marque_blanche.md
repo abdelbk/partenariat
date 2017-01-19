@@ -221,11 +221,17 @@ Voici la table des paramètres :
 
 Lors d'un appel webhooks, la plateforme Simplébo envoie par la même occasion un certain nombre d'informations qui correspondent à un instantané de l'état des informations disponibles sur le client à ce moment. Ces infos peuvent être interpretées ou ignorées.
 
-### Evénements pris en compte
+### Evénements entrainant un appel Webhooks
 
+* Inscription
+* Passage d'un contrat de payant à gratuit
+* Résiliation d'un contrat
+* Passage d'un contrat de gratuit à payant ?
+* Facturation d'options ?
+* Relance d'un contrat ?
 
 ## 4. Echanges non-automatisés - E-mails, téléphone...
 
 ### Offrir le service à un client
 
-### Vous souhaitez l'arrêt du service pour un de vos client
+### Vous souhaitez l'arrêt du service pour l'un de vos client
