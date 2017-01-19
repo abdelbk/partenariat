@@ -109,7 +109,7 @@ En cas de succès :
 {
   "response" : 0,
   "text" : "OK",
-  "redirect_to" :  "https://www.url-de-redirection.simplebo.net"
+  "redirect_to" : "https://www.url-de-redirection.simplebo.net"
 }
 ```
 
@@ -117,7 +117,7 @@ En cas d'échec :
 ```json
 {
   "response" : 1,
-  "text" : " Raison de l’erreur "
+  "text" : "Raison de l’erreur"
 }
 ```
 
@@ -128,7 +128,52 @@ Pour activer le service d'un client, qui peut avoir déjà été envoyé en Lead
 Les réponses sont exactement les mêmes que pour l'envoi de Lead en cas de succès ou d'échec.
 
 ### Exemples de code
+```php
+  
+// Vars initialization
+define('SB_API_URL', 'https://api.www.simplebo.fr/v1/');
+define('LEAD_PATH', 'leads');
+define('CUST_PATH', 'customers');
 
+$lead_url = SB_API_URL + LEAD_PATH;
+$cust_url = SB_API_URL + CUST_PATH;
+
+// Postfield array initialization
+$customer_info = array(
+  'partner_code'  => 'foussier',
+  'partner'       => 'LBA',
+  'campaign_code' => 'foussier-simplebo-12',
+  'client_id'     => '54d8b0fad5922248bf2f',
+  'lastname'      => 'Lhermitte',
+  'firstname'     => 'Thierry',
+  'client_title'  => 'Mme',
+  'email'         => 'thierry.lhermitte@simplebo.fr',
+  'company_name'  => '',
+  'zipcode'       => '28000',
+  'city'          => 'Chartres',
+  'country'       => 'France',
+  'siret'         => '182918291',
+  'typology'      => 12,
+  'other_info'    => "Autres informations dont Simplébo pourrait avoir l'utilité"
+);
+
+// HTTPS Request preparation
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $lead_url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $customer_info);
+
+// Send request
+$req_result = curl_exec($ch);
+
+// Process data
+$api_response = json_decode($req_result);
+//...
+//...
+//...
+```
 
 ## 2. FTP - Échange de la liste des clients à facturer
 
