@@ -107,8 +107,8 @@ La réponse de Simplébo est au format JSON.
 En cas de succès :
 ```json
 {
-  "response" : 0,
-  "text" : "OK",
+  "response": 0,
+  "text": "OK",
   "redirect_to": "https://www.url-de-redirection.simplebo.net"
 }
 ```
@@ -116,7 +116,7 @@ En cas de succès :
 En cas d'échec :
 ```json
 {
-  "response" : 1,
+  "response": 1,
   "text": "Raison de l’erreur"
 }
 ```
@@ -135,8 +135,8 @@ define('SB_API_URL', 'https://api.www.simplebo.fr/v1/');
 define('LEAD_PATH', 'leads');
 define('CUST_PATH', 'customers');
 
-$lead_url = SB_API_URL + LEAD_PATH;
-$cust_url = SB_API_URL + CUST_PATH;
+$lead_url = SB_API_URL . LEAD_PATH;
+$cust_url = SB_API_URL . CUST_PATH;
 
 // Postfield array initialization
 $customer_info = array(
