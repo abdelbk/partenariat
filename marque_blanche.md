@@ -98,9 +98,36 @@ Voici une représentation JSON des données telles qu'elles pourraient être :
 ```
 ### Demande de création de maquette gratuite (envoi de Lead vers Simplébo)
 
+Pour envoyer un lead à Simplébo par API lorsqu'il actionne le bouton `Demande de création de maquette` par exemple, il suffit d'effectuer une requete `POST` vers l'API sur l'URL : `https://api.www.simplebo.fr/v1/leads`
+
+#### Réponse
+
+La réponse de Simplébo est au format JSON.
+
+En cas de succès :
+```json
+{
+  "response" : 0,
+  "text" : "OK",
+  "redirect_to" :  "https://www.url-de-redirection.simplebo.net"
+}
+```
+
+En cas d'échec :
+```json
+{
+  "response" : 1,
+  "text" : " Raison de l’erreur "
+}
+```
+
 ### Activation du service payant
 
-### Exemple de code
+Pour activer le service d'un client, qui peut avoir déjà été envoyé en Lead, ou ne pas encore exister dans la BDD de Simplébo, il suffit d'effectuer de nouveau une requete `POST` vers l'API sur l'URL : `https://api.www.simplebo.fr/v1/customers`
+
+Les réponses sont exactement les mêmes que pour l'envoi de Lead en cas de succès ou d'échec.
+
+### Exemples de code
 
 
 ## 2. FTP - Échange de la liste des clients à facturer
