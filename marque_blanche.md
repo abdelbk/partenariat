@@ -56,7 +56,7 @@ Authorization:Token token="d4e9b0993d1e437605"
 Les données de création de Lead doivent être envoyées par requête POST.
 Les différents arguments sont :
 
-| clé | valeur | Description | Obligatoire |
+| parametre | valeur | Description | Obligatoire |
 | --- | --- | --- | ---         |
 | partner_code  | "foussier" | Code d’identification du partenaire de Simplébo                  | **oui**     |
 | partner       | "LBA" ou "Foussier" | Source de l'appel                                       | **oui**     |
@@ -187,11 +187,42 @@ $api_response = json_decode($req_result);
 
 ### Fonctionnement du Webhooks
 
-Le Webhooks vous permettent d'être abonné à certains événements sur Simplébo. Lorsqu'un de ces événements est déclenché, Simplébo envoie une requête HTTP POST à l'URL configurée du webhook. Le Webhooks peut être appelé lors d'une modification d'état d'un client. Par exemple, lorsque Simplébo résilie un client, un appel au Webhooks peut être effectué pour vous informer de la résiliation.
+Le Webhooks est un callback vous permettant d'être abonné à certains événements sur Simplébo. Lorsqu'un de ces événements est déclenché, Simplébo envoie une requête HTTP POST à l'URL configurée du webhook. Le Webhooks peut être appelé lors d'une modification d'état d'un client. Par exemple, lorsque Simplébo résilie un client, un appel au Webhooks peut être effectué pour vous informer de la résiliation.
 
-### Structure des données transmises via Webhooks
+Dans un premier temps, vous pourrez transmettre à Simplébo une URL dur Webhooks, qui sera appelée lors d'un événement.
+
+### Structure des données transmises lors d'un appel Webhooks
+
+Les données transmises par la plateforme Simplébo lors d'un appel Webhooks sont envoyées dans les paramètres d'une requête POST.
+
+Voici la table des paramètres :
+
+| parametre     | valeurs         | Description                                                 |
+| ---           | ---             | ---                                                         |
+| event_type    | 0 / 1 / 2       | Code représentant le type d'événement                       |
+| subscription_date | 2017-01-22 | Date de souscription au service (format YYYY-MM-DD)          |
+| end_of_contract_date | "2018-11-11" / nil | Date de résiliation du service (format YYYY-MM-DD)      |
+| nb_of_paid_months | 14 | Nombre de mois déjà payés                                            |
+| nb_of_options  | 0 / 1 / 2 | Nombre d'options (facturation Simplébo) souscrites par le client |
+| client_id     | "54d8b0fad5922248bf2f" | Code du client                                       |
+| lastname      | "foussier" | Nom du client                                                    |
+| firstname     | "foussier" | Prénom du client                                                 |
+| client_title  | "Mme" | Civilité du client                                                    |
+| company_name  | "DécOrato" | Nom de la société cliente (Raison sociale)                       |
+| siret         | "182918291" | Siret de la société cliente                                     |
+| email         | "thierry.lhermitte@thierrylhermite.fr" | Email du client                      |
+| phone_number1 | "0182103621" | Telephone 1 du client                                          |
+| phone_number2 | "0629172923" | Téléphone 2 du client                                          |
+| address1      | "12 chemin de la Cote aux Ecureuils" | Première ligne de l'adresse du client  |
+| address2      | "" | Deuxième ligne de l'adresse du client                                    |
+| zipcode       | "28000" | Code postal du client                                               |
+| city          | "Chartres" | Ville du client                                                  |
+| country       | "France" | Pays du client                                                     |
+
+Lors d'un appel webhooks, la plateforme Simplébo envoie par la même occasion un certain nombre d'informations qui correspondent à un instantané de l'état des informations disponibles sur le client à ce moment. Ces infos peuvent être interpretées ou ignorées.
 
 ### Evénements pris en compte
+
 
 ## 4. Echanges non-automatisés - E-mails, téléphone...
 
