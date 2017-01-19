@@ -185,8 +185,12 @@ $api_response = json_decode($req_result);
 
 ## 3. Webhooks - Récupération de modification d'état d'un client
 
-### Fonctionnement d'un webhooks
-### Structure des données transmises via webhooks
+### Fonctionnement du Webhooks
+
+Le Webhooks vous permettent d'être abonné à certains événements sur Simplébo. Lorsqu'un de ces événements est déclenché, Simplébo envoie une requête HTTP POST à l'URL configurée du webhook. Le Webhooks peut être appelé lors d'une modification d'état d'un client. Par exemple, lorsque Simplébo résilie un client, un appel au Webhooks peut être effectué pour vous informer de la résiliation.
+
+### Structure des données transmises via Webhooks
+
 ### Evénements pris en compte
 
 ## 4. Echanges non-automatisés - E-mails, téléphone...
